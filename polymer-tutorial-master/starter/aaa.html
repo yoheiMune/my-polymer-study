@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <!--新技術を使うためのポリフィル-->
+        <script src="../components/platform/platform.js"></script>
+        <!--ヘッダーパネルのインポート-->
+        <link rel="import" href="../components/core-header-panel/core-header-panel.html">
+        <!--ツールバーのインポート-->
+        <link rel="import" href="../components/core-toolbar/core-toolbar.html">
+        <!--タブのインポート-->
+        <link rel="import" href="../components/paper-tabs/paper-tabs.html">
+        <!--表示する要素の装飾をカスタマイズします-->
+        <style>
+            html,body {
+              height: 100%;
+              margin: 0;
+              background-color: #E5E5E5;
+              font-family: 'RobotoDraft', sans-serif;
+            }        
+            core-header-panel {
+              height: 100%;
+              overflow: auto;
+              -webkit-overflow-scrolling: touch; 
+            }
+            core-toolbar {
+              background: #03a9f4;
+              color: white;
+            }
+            #tabs {
+              width: 100%;
+              margin: 0;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
+        </style>
+    </head>
+    <!--unresolvedを付けることで表示モジュール準備中の状態は表示しない-->
+    <body unresolved>
+
+        <!--画面上部にツールバーを作り、その中にタブを配置した例-->
+        <core-header-panel>
+            <core-toolbar>
+            <paper-tabs id="tabs" selected="all" self-end>
+                <paper-tab name="all">ALL</paper-tab>
+                <paper-tab name="favorites">FAVORITES</paper-tab>
+              </paper-tabs>
+            </core-toolbar>
+        </core-header-panel>
+
+        <!--タブ切り替わりのイベントをキャッチする処理の例-->
+        <script>
+          var tabs = document.querySelector('paper-tabs');
+          tabs.addEventListener('core-select', function() {
+            console.log("Selected: " + tabs.selected);
+          });
+        </script>
+
+    </body>
+</html>
+
